@@ -1,0 +1,14 @@
+.direnv
+.venv
+*:Zone.Identifier
+.env
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
