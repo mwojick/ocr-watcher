@@ -5,8 +5,7 @@
 
   outputs = { self, nixpkgs }:
     let
-      supportedSystems =
-        [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSupportedSystem = f:
         nixpkgs.lib.genAttrs supportedSystems
         (system: f { pkgs = import nixpkgs { inherit system; }; });
@@ -15,7 +14,7 @@
         default = pkgs.mkShell {
           venvDir = ".venv";
           packages = with pkgs;
-            [ python312 stdenv.cc.cc.lib makeWrapper tesseract ]
+            [ python312 stdenv.cc.cc.lib makeWrapper tesseract wl-clipboard ]
             ++ (with pkgs.python312Packages; [ uv ruff ]);
 
           shellHook = ''

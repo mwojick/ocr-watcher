@@ -3,7 +3,6 @@ import time
 import os
 import tempfile
 from PIL import ImageGrab
-import pyperclip
 
 
 def process_image_with_tesseract(image_path):
@@ -23,10 +22,10 @@ def process_image_with_tesseract(image_path):
         capture_output=True,
         text=True,
     )
-    # Copy the result to clipboard
+    # Copy the result to clipboard using wl-copy
     ocr_text = result.stdout.strip()
     if ocr_text:
-        pyperclip.copy(ocr_text)
+        subprocess.run(["wl-copy"], input=ocr_text.encode(), check=False)
         print(f"OCR Text copied to clipboard: {ocr_text}")
     else:
         print(f"Error: {result.stderr}")

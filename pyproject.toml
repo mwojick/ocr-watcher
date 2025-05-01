@@ -2,4 +2,4 @@
 name = "ocr-watcher"
 version = "1.0.0"
 
-dependencies = ["pillow", "pyperclip"]
+dependencies = ["pillow"]
