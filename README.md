@@ -12,5 +12,5 @@ uv sync
 # Running
 
 ```bash
-python -m ocr_watcher.py
+python -m ocr_watcher
 ```
