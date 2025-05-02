@@ -42,9 +42,7 @@ def main():
 
             if img is not None:
                 # Compare with last image to avoid processing the same image multiple times
-                current_image_data = id(
-                    img
-                )  # Using object id as a simple way to detect changes
+                current_image_data = img.tobytes()
 
                 if current_image_data != last_image_data:
                     print("New image detected in clipboard")
@@ -63,11 +61,10 @@ def main():
                     os.unlink(temp_filename)
 
             # Wait before checking again
-            time.sleep(1)
+            time.sleep(0.5)
 
         except Exception as e:
             print(f"Error: {e}")
-            time.sleep(5)  # Wait longer if there was an error
 
 
 if __name__ == "__main__":
